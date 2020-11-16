@@ -1,19 +1,17 @@
 /// <reference types="cypress" />
 import { fuelSavings } from '../pages/fuelSavings';
 
-var mpg1 = 10
-var mpg2 = 18
-var price1 = 3.99 
-var price2 = 4.99
-var milhas = 1000
+var mpg1 = (Math.random() * (20 - 5) + 5).toFixed(2)
+var mpg2 = (Math.random() * (20 - 5) + 5).toFixed(2)
+var price1 = (Math.random() * (20 - 5) + 5).toFixed(2)
+var price2 = (Math.random() * (20 - 5) + 5).toFixed(2) 
+var milhas = (Math.random() * (1000 - 100) + 100).toFixed()
 var data = new Date();
 
 context('tests ', () => {
   beforeEach(() => {
     cy.visit(fuelSavings.base_url)
   })
-
-  // https://on.cypress.io/interacting-with-elements
  
     it('Teste dos campos', () => { 
       cy.get(fuelSavings.newMpg).clear().type(mpg1).should("have.value", mpg1)
@@ -62,7 +60,7 @@ context('tests ', () => {
       cy.get(fuelSavings.results).should('not.be.visible')
       })
 
-      it('Teste para não aceitar texto', () => { 
+    it('Teste para não aceitar texto', () => { 
       cy.get(fuelSavings.newMpg).clear().type('10,0')
       cy.get(fuelSavings.tradeMpg).clear().type('18,0')
       cy.get(fuelSavings.newPpg).clear().type('3,99')
@@ -73,7 +71,7 @@ context('tests ', () => {
       }) 
 
 
-      it('Teste de loss ou savings', () => { 
+    it('Teste de loss ou savings', () => { 
       cy.get(fuelSavings.newMpg).clear().type(mpg1)
       cy.get(fuelSavings.tradeMpg).clear().type(mpg2)
       cy.get(fuelSavings.newPpg).clear().type(price1)

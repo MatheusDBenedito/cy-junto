@@ -9,7 +9,6 @@ const fuelSavings = {
     dateModified:':nth-child(6) > :nth-child(2)',
     save:'[type="submit"]',
     results: 'td[class="fuel-savings-label"]'    
-
 };
 
 export {fuelSavings};
